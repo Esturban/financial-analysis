@@ -59,5 +59,3 @@ def pairgrid(df):
     # Finally we'll define the diagonal as a series of histogram plots of the daily return
     returns_fig.map_diag(plt.hist,bins=30)
     return returns_fig
-
-pairgrid(closing_df)

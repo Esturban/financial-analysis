@@ -2,6 +2,7 @@ import yfinance as yf
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+import seaborn as sns
 # Function to download and prepare stock data
 def dl_combined_data(tickers, start, end, debug=None):
     '''Download stock data for multiple tickers and return a clean DataFrame'''
@@ -47,3 +48,16 @@ def create_sequences(data, seq_length):
         xs.append(data[i - seq_length:i])
         ys.append(data[i])
     return np.array(xs), np.array(ys)
+
+def pairgrid(df):
+    # Set up our figure by naming it returns_fig, call PairPLot on the DataFrame
+    returns_fig = sns.PairGrid(df)
+    # Using map_upper we can specify what the upper triangle will look like.
+    returns_fig.map_upper(plt.scatter,color='purple')
+    # We can also define the lower triangle in the figure, inclufing the plot type (kde) or the color map (BluePurple)
+    returns_fig.map_lower(sns.kdeplot,cmap='cool_d')
+    # Finally we'll define the diagonal as a series of histogram plots of the daily return
+    returns_fig.map_diag(plt.hist,bins=30)
+    return returns_fig
+
+pairgrid(closing_df)

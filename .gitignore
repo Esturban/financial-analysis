@@ -5,3 +5,4 @@ __pycache__
 .specify
 .cursor
 .gitignore
+*.code-workspace

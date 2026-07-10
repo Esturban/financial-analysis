@@ -6,3 +6,9 @@ __pycache__
 .cursor
 .gitignore
 *.code-workspace
+.codegraph/
+.wolf/
+.claude/
+AGENTS.md
+CLAUDE.md
+GEMINI.md
